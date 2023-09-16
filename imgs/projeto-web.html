@@ -1,0 +1,104 @@
+<html>
+    <head>
+        <title>Loja Perfume</title>
+        <meta charset="utf-8" />
+        <style>
+            #produtos{
+            max-width: 700px;
+                margin: 0;
+                padding: 5%;
+                display: flex;
+            }
+            #carrinho{
+                max-width: 700px;
+                margin: 0;
+                padding: 5%;
+                display: block;
+            }
+
+            .produto{
+                width: 50%;
+                padding: 20px;
+
+            }
+        </style>
+    </head>
+
+    <body>
+
+        <div id="produtos">
+            <h2> Catalogo:</h2>>
+
+        </div>
+
+        <div id="carinho">
+            <h2>Carrinho:</h2>
+
+        </div>
+
+        <script>
+            const items = [
+                {
+                    id: 0,
+                    nome: 'perfumes',
+                    img: 'perfumes.png',
+                    quantidade: 3
+
+                },
+                {
+                    id: 1,
+                    nome: 'batom',
+                    img: 'batom.png',
+                    quantidade: 2
+
+                },
+                {
+                    id: 3,
+                    nome: 'protetor solar',
+                    img: 'protetor.png',
+                    quantidade: 3
+
+                },
+            ]
+            inicializarLojaVirtual = () => {
+                var containerCarrinho = document.getElementById('Carrinho');
+                containerCarrinho.innerHTML = "";
+                items.map((value)=>{
+                    if(value.quantidade > 0){
+                    containerCarrinho.innerHTML+= `
+
+                    <p> `+value.nome+` | quantidade: `+value.quantidade+`</p>
+                    <hr>
+
+                    ;
+                    }
+                } 
+                })
+            }
+
+            inicializarLojaVirtual();
+
+            AtualizarCarrinho = () => {
+                console.log(items);
+
+            }
+
+            var links = document.getElementsByTagName('a');
+
+            for(var i = 0; i < links.length; i++){
+
+                links[i]addEventListener("click",function(){
+                    var key = this.getAttribute('key');
+                    items[key].quantidade++;
+                    AtualizarCarrinho();
+                    return false;
+                })
+            }
+
+
+
+        </script>
+    </body>
+</html>
+
+
